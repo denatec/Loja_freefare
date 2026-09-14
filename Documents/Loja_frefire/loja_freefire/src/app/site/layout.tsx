@@ -10,10 +10,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className="site-body">
         <Navbar />
 
-        <main className="content flex-1">
+        <main className="content">
           {children}
         </main>
 

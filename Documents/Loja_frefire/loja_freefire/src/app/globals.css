@@ -7,16 +7,21 @@
 :root {
   --background: #050816;
   --background-secondary: #080d1f;
+
   --blue: #00a8ff;
   --blue-light: #38bdf8;
   --blue-dark: #0066ff;
+
   --green: #22c55e;
   --green-light: #4ade80;
   --green-neon: #00ff88;
+
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
+
   --purple: #8b35e8;
   --purple-light: #a855f7;
+
   --orange: #ff6b00;
   --orange-light: #ff8a2a;
 }
@@ -29,14 +34,18 @@
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--text-primary);
+
   --color-blue: var(--blue);
   --color-blue-light: var(--blue-light);
   --color-blue-dark: var(--blue-dark);
+
   --color-green: var(--green);
   --color-green-light: var(--green-light);
   --color-green-neon: var(--green-neon);
+
   --color-purple: var(--purple);
   --color-purple-light: var(--purple-light);
+
   --color-orange: var(--orange);
   --color-orange-light: var(--orange-light);
 }
@@ -61,31 +70,34 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 62px 0 0;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
   background: var(--background);
   color: var(--text-primary);
+
   font-family: Arial, Helvetica, sans-serif;
-  padding-top: 62px;
 }
 
-
 /* =========================================================
-   ÂNCORAS
+   ÂNCORAS DAS SEÇÕES
 ========================================================= */
 
 [id] {
-  scroll-margin-top: 10px;
-}
-
-/* INÍCIO não precisa de margem */
-#inicio {
   scroll-margin-top: 70px;
 }
 
 @media (max-width: 700px) {
   [id] {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 65px;
   }
 }
+
 /* =========================================================
    NAVBAR
 ========================================================= */
@@ -134,11 +146,11 @@ body {
 
 /* =========================================================
    LOGO
-   Fica sempre à esquerda
 ========================================================= */
 
 .brand {
   position: absolute;
+
   left: 24px;
   top: 50%;
 
@@ -150,7 +162,6 @@ body {
   gap: 10px;
 
   text-decoration: none;
-
   flex-shrink: 0;
 }
 
@@ -199,9 +210,13 @@ body {
 .brand-green {
   color: #2d7911;
 }
+
+.brand-yellow {
+  color: #facc15;
+}
+
 /* =========================================================
    MENU
-   Fica exatamente no centro
 ========================================================= */
 
 .menu {
@@ -235,6 +250,7 @@ body {
   color: #918d9e;
 
   font-family: Arial, Helvetica, sans-serif;
+
   font-size: 13px;
   font-weight: 800;
 
@@ -248,14 +264,24 @@ body {
     transform 0.25s ease;
 }
 
+/* =========================================================
+   HOVER
+========================================================= */
+
 .nav-link:hover {
   color: #ffffff;
 
   background: rgba(111, 53, 210, 0.12);
 }
 
-.nav-link.active {
-  color: #eeeaff;
+/* =========================================================
+   MENU ATIVO
+========================================================= */
+
+.nav-link.active-home,
+.nav-link.active-recharges,
+.nav-link.active-marketplace {
+  color: #ffffff;
 
   background:
     linear-gradient(
@@ -270,70 +296,63 @@ body {
 }
 
 /* =========================================================
-   CRIAR CONTA — AMARELO
+   INÍCIO ATIVO
 ========================================================= */
 
-.register-btn {
-  height: 36px;
-  padding: 0 18px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #facc15;
-  border-radius: 7px;
-
-  background: #facc15;
-
-  color: #050505;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-
-  letter-spacing: 0.3px;
-
-  text-decoration: none;
-
-  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.18);
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+.nav-link.active-home {
+  color: #ffffff;
 }
 
-.register-btn:hover {
-  background: #fde047;
-  border-color: #fde047;
+/* =========================================================
+   RECARGAS ATIVO
+========================================================= */
+
+.nav-link.active-recharges {
+  color: #4ade80;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(34, 197, 94, 0.15),
+      rgba(22, 101, 52, 0.10)
+    );
 
   box-shadow:
-    0 6px 20px rgba(250, 204, 21, 0.28);
-
-  transform: translateY(-2px);
+    inset 0 1px rgba(255, 255, 255, 0.05),
+    0 5px 18px rgba(34, 197, 94, 0.12);
 }
+
 /* =========================================================
    MARKETPLACE
 ========================================================= */
 
-.nav-link.marketplace {
+.nav-link.nav-marketplace {
   color: #348dff;
 }
 
-.nav-link.marketplace:hover {
+.nav-link.nav-marketplace:hover {
   color: #65a9ff;
+
   background: rgba(0, 119, 255, 0.08);
 }
 
-.nav-link.marketplace.active-marketplace {
+.nav-link.active-marketplace {
   color: #5ca5ff;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 119, 255, 0.15),
+      rgba(0, 85, 180, 0.10)
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.05),
+    0 5px 18px rgba(0, 119, 255, 0.14);
 }
 
 /* =========================================================
    AÇÕES
-   Ficam sempre à direita
 ========================================================= */
 
 .nav-actions {
@@ -364,6 +383,7 @@ body {
   justify-content: center;
 
   border: 1px solid rgba(34, 197, 94, 0.48);
+
   border-radius: 7px;
 
   background: rgba(19, 74, 57, 0.22);
@@ -371,6 +391,7 @@ body {
   color: #4ade80;
 
   font-family: Arial, Helvetica, sans-serif;
+
   font-size: 13px;
   font-weight: 800;
 
@@ -413,6 +434,7 @@ body {
   justify-content: center;
 
   border: 1px solid rgba(190, 132, 255, 0.72);
+
   border-radius: 7px;
 
   background:
@@ -425,6 +447,7 @@ body {
   color: #ffffff;
 
   font-family: Arial, Helvetica, sans-serif;
+
   font-size: 13px;
   font-weight: 800;
 
@@ -459,7 +482,8 @@ body {
   position: relative;
   z-index: 1;
 
-  min-height: calc(100vh - 62px);
+  flex: 1;
+  width: 100%;
 }
 
 /* =========================================================
@@ -507,22 +531,20 @@ body {
   background:
     conic-gradient(
       from 0deg,
-
       transparent 0deg,
       transparent 220deg,
-
       rgba(255, 72, 0, 0.08) 240deg,
       rgba(255, 72, 0, 0.35) 255deg,
       #ff4d00 275deg,
       #ff7b00 290deg,
       #a02cff 310deg,
       #6f2cff 325deg,
-
       transparent 345deg,
       transparent 360deg
     );
 
-  animation: login-border-rotate 3.2s linear infinite;
+  animation:
+    login-border-rotate 3.2s linear infinite;
 }
 
 .login-border-glow::after {
@@ -555,15 +577,12 @@ body {
   background:
     conic-gradient(
       from 0deg,
-
       transparent 0deg,
       transparent 230deg,
-
       rgba(255, 72, 0, 0.12) 250deg,
       rgba(255, 72, 0, 0.5) 275deg,
       rgba(255, 115, 0, 0.25) 290deg,
       rgba(140, 40, 255, 0.5) 320deg,
-
       transparent 350deg,
       transparent 360deg
     );
@@ -572,7 +591,8 @@ body {
 
   opacity: 0.65;
 
-  animation: login-border-rotate 3.2s linear infinite;
+  animation:
+    login-border-rotate 3.2s linear infinite;
 }
 
 /* =========================================================
@@ -603,6 +623,23 @@ body {
     inset 0 0 40px rgba(115, 30, 180, 0.03);
 }
 
+.footer {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+
+  background: #080d1f;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding: 40px 24px;
+}
+
+.footer-container {
+  max-width: 1450px;
+  margin: 0 auto;
+}
 /* =========================================================
    ANIMAÇÃO DA BORDA
 ========================================================= */
@@ -815,5 +852,20 @@ body {
   .login-btn,
   .register-btn {
     transition: none;
+  }
+}
+
+[id] {
+  scroll-margin-top: 10px;
+}
+
+/* INÍCIO não precisa de margem */
+#inicio {
+  scroll-margin-top: 70px;
+}
+
+@media (max-width: 700px) {
+  [id] {
+    scroll-margin-top: 70px;
   }
 }
