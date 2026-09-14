@@ -1,5 +1,5 @@
 "use client";
-import "../src/app/globals.css";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -8,27 +8,35 @@ export function Navbar() {
   const [active, setActive] = useState("inicio");
 
   useEffect(() => {
-    const sections = ["inicio", "recargas", "marketplace"];
-
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 100;
 
-      for (const id of sections) {
-        const section = document.getElementById(id);
+      const inicio = document.getElementById("inicio");
+      const recargas = document.getElementById("recargas");
+      const marketplace = document.getElementById("marketplace");
 
-        if (!section) continue;
+      if (!inicio || !recargas || !marketplace) {
+        return;
+      }
 
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
+      const inicioTop = inicio.offsetTop;
+      const recargasTop = recargas.offsetTop;
+      const marketplaceTop = marketplace.offsetTop;
 
-        if (scrollPosition >= top && scrollPosition < top + height) {
-          setActive(id);
-          break;
-        }
+      if (scrollPosition >= marketplaceTop) {
+        setActive("marketplace");
+      } else if (scrollPosition >= recargasTop) {
+        setActive("recargas");
+      } else if (scrollPosition >= inicioTop) {
+        setActive("inicio");
+      } else {
+        setActive("inicio");
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -40,24 +48,28 @@ export function Navbar() {
 
     const section = document.getElementById(id);
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (!section) {
+      return;
     }
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <header className="navbar">
       <div className="navbar-container">
+
         {/* =================================================
-            LOGO — ESQUERDA
+            LOGO
         ================================================== */}
+
         <Link href="/" className="brand">
           <div className="brand-icon">
             <Image
-              src="/images/logo.png"
+              src="/img/IMG-20260831-WA0004-removebg-preview.png"
               alt="Xuxadas Shop"
               width={50}
               height={50}
@@ -67,59 +79,102 @@ export function Navbar() {
           </div>
 
           <div className="brand-name">
-            <span className="brand-green">XUXADAS</span>
+            <span className="brand-green">
+              XUXADAS
+            </span>
 
-            <span className="brand-yellow">SHOP</span>
+            <span className="brand-white">
+              SHOP
+            </span>
           </div>
         </Link>
 
         {/* =================================================
-            MENU — CENTRO
+            MENU
         ================================================== */}
+
         <nav className="menu">
+
+          {/* INÍCIO */}
+
           <button
             type="button"
             onClick={() => handleClick("inicio")}
             className={`nav-link nav-home ${
-              active === "inicio" ? "active-home" : ""
+              active === "inicio"
+                ? "active-home"
+                : ""
             }`}
           >
             INÍCIO
           </button>
 
+          {/* RECARGAS */}
+
           <button
             type="button"
             onClick={() => handleClick("recargas")}
             className={`nav-link nav-recharges ${
-              active === "recargas" ? "active-recharges" : ""
+              active === "recargas"
+                ? "active-recharges"
+                : ""
             }`}
           >
             RECARGAS
           </button>
 
+             {/* Especiais */}
+
+          <button
+            type="button"
+            onClick={() => handleClick("pacotes")}
+            className={`nav-link nav-recharges ${
+              active === "pacotes"
+                ? "active-recharges"
+                : ""
+            }`}
+          >
+            PACOTES ESPECIAIS
+          </button>
+
+          {/* MARKETPLACE */}
+
           <button
             type="button"
             onClick={() => handleClick("marketplace")}
             className={`nav-link nav-marketplace ${
-              active === "marketplace" ? "active-marketplace" : ""
+              active === "marketplace"
+                ? "active-marketplace"
+                : ""
             }`}
           >
             MARKETPLACE
           </button>
+
         </nav>
 
         {/* =================================================
-            AÇÕES — DIREITA
+            AÇÕES
         ================================================== */}
+
         <div className="nav-actions">
-          <Link href="/login" className="login-btn">
+
+          <Link
+            href="/login"
+            className="login-btn"
+          >
             LOGIN
           </Link>
 
-          <Link href="../src/app/login" className="register-btn">
+          <Link
+            href="/cadastro"
+            className="register-btn"
+          >
             CRIAR CONTA
           </Link>
+
         </div>
+
       </div>
     </header>
   );

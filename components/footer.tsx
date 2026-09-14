@@ -1,11 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-transparent">
-      <div className="mx-auto max-w-375 px-6 py-16">
+    <footer
+      className="
+        relative
+        z-20
+        w-full
+        overflow-hidden
+        border-t
+        border-white/10
+        bg-[#080d1f]
+      "
+    >
+      <div className="mx-auto w-full max-w-[1500px] px-6 py-16">
 
         {/* PARTE PRINCIPAL */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
@@ -39,8 +50,15 @@ export function Footer() {
                   shadow-purple-500/10
                 "
               >
-                💎
-              </div>
+                            <Image
+                              src="/img/IMG-20260831-WA0004-removebg-preview.png"
+                              alt="Xuxadas Shop"
+                              width={50}
+                              height={50}
+                              className="brand-logo"
+                              priority
+                            />
+                  </div>
 
               {/* NOME */}
               <div>
@@ -49,11 +67,11 @@ export function Footer() {
                     text-2xl
                     font-black
                     tracking-wide
-                    text-white
+                    brand-green
                   "
                 >
-                  FABY
-                  <span className="text-purple-500"> SHOP</span>
+                  XUXADAS
+                  <span className="text-white"> SHOP</span>
                 </h2>
 
                 <p className="text-xs font-medium tracking-widest text-slate-500">
@@ -70,23 +88,13 @@ export function Footer() {
 
             {/* REDES SOCIAIS */}
             <div className="mt-7 flex items-center gap-3">
-
               <a
                 href="#"
                 aria-label="Facebook"
                 className="
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-transparent
-                  text-sm
-                  font-bold
-                  text-slate-400
+                  flex h-10 w-10 items-center justify-center
+                  rounded-lg border border-white/10
+                  bg-transparent text-sm font-bold text-slate-400
                   transition-all
                   hover:border-blue-500/50
                   hover:text-blue-400
@@ -99,18 +107,9 @@ export function Footer() {
                 href="#"
                 aria-label="Instagram"
                 className="
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-transparent
-                  text-sm
-                  font-bold
-                  text-slate-400
+                  flex h-10 w-10 items-center justify-center
+                  rounded-lg border border-white/10
+                  bg-transparent text-sm font-bold text-slate-400
                   transition-all
                   hover:border-pink-500/50
                   hover:text-pink-400
@@ -123,18 +122,9 @@ export function Footer() {
                 href="#"
                 aria-label="WhatsApp"
                 className="
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-transparent
-                  text-sm
-                  font-bold
-                  text-slate-400
+                  flex h-10 w-10 items-center justify-center
+                  rounded-lg border border-white/10
+                  bg-transparent text-sm font-bold text-slate-400
                   transition-all
                   hover:border-green-500/50
                   hover:text-green-400
@@ -147,18 +137,9 @@ export function Footer() {
                 href="#"
                 aria-label="TikTok"
                 className="
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-transparent
-                  text-sm
-                  font-bold
-                  text-slate-400
+                  flex h-10 w-10 items-center justify-center
+                  rounded-lg border border-white/10
+                  bg-transparent text-sm font-bold text-slate-400
                   transition-all
                   hover:border-white/40
                   hover:text-white
@@ -166,7 +147,6 @@ export function Footer() {
               >
                 ♪
               </a>
-
             </div>
           </div>
 
@@ -304,7 +284,6 @@ export function Footer() {
             </a>
           </div>
         </div>
-
       </div>
 
       {/* BRILHO DECORATIVO */}
@@ -312,7 +291,7 @@ export function Footer() {
         className="
           pointer-events-none
           absolute
-          bottom-30
+          bottom-0
           left-1/2
           h-64
           w-64

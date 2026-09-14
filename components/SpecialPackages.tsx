@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const packages = [
   {
     name: "ECONÔMICO",
@@ -32,8 +36,34 @@ const packages = [
 ];
 
 export function SpecialPackages() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="pacotes"
       className="
         relative
@@ -112,10 +142,15 @@ export function SpecialPackages() {
             xl:grid-cols-5
           "
         >
-          {packages.map((item) => (
+          {packages.map((item, index) => (
             <article
               key={item.name}
-              className="
+              style={{
+                transitionDelay: isVisible
+                  ? `${index * 120}ms`
+                  : "0ms",
+              }}
+              className={`
                 group
                 relative
                 overflow-hidden
@@ -124,15 +159,24 @@ export function SpecialPackages() {
                 border-white/[0.08]
                 bg-transparent
                 p-5
+
+                transform
                 transition-all
-                duration-300
+                duration-700
+                ease-out
+
+                ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-16 opacity-0"
+                }
+
                 hover:-translate-y-2
                 hover:border-purple-500/40
                 hover:shadow-xl
                 hover:shadow-purple-500/10
-              "
+              `}
             >
-
               {/* BRILHO */}
               <div
                 className="

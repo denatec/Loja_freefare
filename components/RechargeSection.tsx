@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 const packages = [
   {
     name: "MINI PACK",
@@ -61,8 +63,34 @@ const packages = [
 ];
 
 export function RechargeSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="recargas"
       className="
         relative
@@ -133,9 +161,14 @@ export function RechargeSection() {
             xl:grid-cols-5
           "
         >
-          {packages.map((item) => (
+          {packages.map((item, index) => (
             <article
               key={item.name}
+              style={{
+                transitionDelay: isVisible
+                  ? `${index * 120}ms`
+                  : "0ms",
+              }}
               className={`
                 group
                 relative
@@ -143,8 +176,18 @@ export function RechargeSection() {
                 rounded-2xl
                 border
                 p-5
+
+                transform
                 transition-all
-                duration-300
+                duration-700
+                ease-out
+
+                ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-16 opacity-0"
+                }
+
                 hover:-translate-y-2
 
                 ${
@@ -166,7 +209,6 @@ export function RechargeSection() {
                 }
               `}
             >
-
               {/* BRILHO */}
               <div
                 className={`
@@ -182,6 +224,7 @@ export function RechargeSection() {
                   transition-opacity
                   duration-300
                   group-hover:opacity-100
+
                   ${
                     item.featured
                       ? "bg-orange-500/20"
