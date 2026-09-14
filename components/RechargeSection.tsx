@@ -99,15 +99,17 @@ export function RechargeSection() {
         bg-transparent
         px-4
         py-20
+        sm:px-6
+        lg:px-8
       "
     >
-      <div className="mx-auto max-w-[1500px]">
-
+      <div className="relative z-10 mx-auto max-w-[1500px]">
         {/* TÍTULO */}
         <div className="mb-12 text-center">
           <span
             className="
               inline-flex
+              items-center
               rounded-full
               border
               border-purple-500/30
@@ -136,7 +138,8 @@ export function RechargeSection() {
               className="
                 bg-gradient-to-r
                 from-purple-400
-                to-orange-400
+                via-yellow-400
+                to-green-400
                 bg-clip-text
                 text-transparent
               "
@@ -155,7 +158,7 @@ export function RechargeSection() {
           className="
             grid
             grid-cols-1
-            gap-4
+            gap-5
             sm:grid-cols-2
             lg:grid-cols-4
             xl:grid-cols-5
@@ -172,12 +175,12 @@ export function RechargeSection() {
               className={`
                 group
                 relative
+                transform
                 overflow-hidden
                 rounded-2xl
                 border
                 p-5
-
-                transform
+                backdrop-blur-xl
                 transition-all
                 duration-700
                 ease-out
@@ -193,23 +196,29 @@ export function RechargeSection() {
                 ${
                   item.featured
                     ? `
-                      border-orange-500/50
-                      bg-transparent
-                      hover:border-orange-400
+                      border-orange-400/50
+                      bg-gradient-to-br
+                      from-orange-500/20
+                      via-yellow-500/10
+                      to-purple-500/15
+                      hover:border-orange-300
                       hover:shadow-xl
                       hover:shadow-orange-500/10
                     `
                     : `
-                      border-white/[0.08]
-                      bg-transparent
-                      hover:border-purple-500/40
+                      border-white/10
+                      bg-gradient-to-br
+                      from-purple-500/15
+                      via-blue-500/10
+                      to-green-500/15
+                      hover:border-purple-400/40
                       hover:shadow-xl
                       hover:shadow-purple-500/10
                     `
                 }
               `}
             >
-              {/* BRILHO */}
+              {/* BRILHO DO CARD */}
               <div
                 className={`
                   pointer-events-none
@@ -222,116 +231,141 @@ export function RechargeSection() {
                   blur-3xl
                   opacity-0
                   transition-opacity
-                  duration-300
+                  duration-500
                   group-hover:opacity-100
 
                   ${
                     item.featured
-                      ? "bg-orange-500/20"
-                      : "bg-purple-500/15"
+                      ? "bg-yellow-400/30"
+                      : "bg-purple-500/25"
                   }
                 `}
               />
 
-              {/* DIAMANTES */}
-              <div className="relative flex items-center gap-3">
-                <div className="text-4xl">
-                  💎
-                </div>
+              {/* BRILHO VERDE */}
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -bottom-16
+                  -left-16
+                  h-32
+                  w-32
+                  rounded-full
+                  bg-green-500/20
+                  blur-3xl
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              />
 
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="
-                        text-3xl
-                        font-black
-                        text-purple-400
-                      "
-                    >
-                      {item.diamonds}
-                    </span>
+              {/* CONTEÚDO */}
+              <div className="relative z-10">
+                {/* DIAMANTES */}
+                <div className="flex items-center gap-3">
+                  <div className="text-4xl drop-shadow-lg">
+                    💎
+                  </div>
 
-                    <span className="text-sm text-slate-500">
-                      {item.bonus}
-                    </span>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="
+                          text-3xl
+                          font-black
+                          text-purple-400
+                        "
+                      >
+                        {item.diamonds}
+                      </span>
+
+                      <span className="text-sm text-green-400">
+                        {item.bonus}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* NOME */}
-              <h3
-                className="
-                  relative
-                  mt-5
-                  text-lg
-                  font-bold
-                  text-slate-300
-                "
-              >
-                {item.name}
-              </h3>
-
-              {/* PREÇO */}
-              <div className="relative mt-5">
-                <span
+                {/* NOME */}
+                <h3
                   className="
-                    text-sm
-                    text-slate-500
-                    line-through
+                    relative
+                    mt-5
+                    text-lg
+                    font-bold
+                    text-slate-200
                   "
                 >
-                  {item.oldPrice}
-                </span>
+                  {item.name}
+                </h3>
 
-                <div
-                  className="
-                    mt-1
-                    text-2xl
-                    font-black
-                    text-green-400
-                  "
-                >
-                  {item.price}
+                {/* PREÇO */}
+                <div className="relative mt-5">
+                  <span
+                    className="
+                      text-sm
+                      text-slate-500
+                      line-through
+                    "
+                  >
+                    {item.oldPrice}
+                  </span>
+
+                  <div
+                    className="
+                      mt-1
+                      text-2xl
+                      font-black
+                      text-green-400
+                    "
+                  >
+                    {item.price}
+                  </div>
                 </div>
+
+                {/* BOTÃO */}
+                <button
+                  type="button"
+                  className={`
+                    relative
+                    mt-6
+                    w-full
+                    rounded-lg
+                    px-4
+                    py-3
+                    font-bold
+                    transition-all
+                    duration-300
+
+                    ${
+                      item.featured
+                        ? `
+                          bg-gradient-to-r
+                          from-yellow-400
+                          to-orange-500
+                          text-black
+                          hover:brightness-110
+                          hover:shadow-lg
+                          hover:shadow-orange-500/20
+                        `
+                        : `
+                          bg-gradient-to-r
+                          from-purple-600
+                          via-blue-600
+                          to-green-500
+                          text-white
+                          hover:brightness-110
+                          hover:shadow-lg
+                          hover:shadow-purple-500/20
+                        `
+                    }
+                  `}
+                >
+                  Comprar
+                </button>
               </div>
-
-              {/* BOTÃO */}
-              <button
-                type="button"
-                className={`
-                  relative
-                  mt-6
-                  w-full
-                  rounded-lg
-                  px-4
-                  py-3
-                  font-bold
-                  transition-all
-                  duration-300
-
-                  ${
-                    item.featured
-                      ? `
-                        bg-orange-500
-                        text-black
-                        hover:bg-orange-400
-                        hover:shadow-lg
-                        hover:shadow-orange-500/20
-                      `
-                      : `
-                        bg-gradient-to-r
-                        from-purple-600
-                        to-purple-500
-                        text-white
-                        hover:brightness-110
-                        hover:shadow-lg
-                        hover:shadow-purple-500/20
-                      `
-                  }
-                `}
-              >
-                Comprar
-              </button>
             </article>
           ))}
         </div>

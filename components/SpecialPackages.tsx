@@ -72,24 +72,31 @@ export function SpecialPackages() {
         bg-transparent
         px-4
         py-20
+        sm:px-6
+        lg:px-8
       "
     >
-      <div className="mx-auto max-w-[1500px]">
+      <div className="relative z-10 mx-auto max-w-[1500px]">
 
+        {/* ========================= */}
         {/* TÍTULO */}
+        {/* ========================= */}
+
         <div className="mb-12 text-center">
           <span
             className="
               inline-flex
+              items-center
               rounded-full
               border
               border-purple-500/30
-              bg-transparent
+              bg-purple-500/5
               px-5
               py-2
               text-sm
               font-bold
               text-purple-400
+              backdrop-blur-sm
             "
           >
             ⭐ Assinaturas & Passes
@@ -109,7 +116,8 @@ export function SpecialPackages() {
               className="
                 bg-gradient-to-r
                 from-purple-400
-                to-orange-400
+                via-yellow-400
+                to-green-400
                 bg-clip-text
                 text-transparent
               "
@@ -123,7 +131,9 @@ export function SpecialPackages() {
               mx-auto
               mt-4
               max-w-2xl
+              text-sm
               text-slate-400
+              sm:text-base
             "
           >
             Assinaturas semanais, mensais e passes exclusivos
@@ -131,7 +141,10 @@ export function SpecialPackages() {
           </p>
         </div>
 
+        {/* ========================= */}
         {/* PACOTES */}
+        {/* ========================= */}
+
         <div
           className="
             grid
@@ -156,10 +169,13 @@ export function SpecialPackages() {
                 overflow-hidden
                 rounded-2xl
                 border
-                border-white/[0.08]
-                bg-transparent
+                border-white/10
+                bg-gradient-to-br
+                from-purple-500/10
+                via-blue-500/5
+                to-green-500/10
                 p-5
-
+                backdrop-blur-md
                 transform
                 transition-all
                 duration-700
@@ -172,12 +188,15 @@ export function SpecialPackages() {
                 }
 
                 hover:-translate-y-2
-                hover:border-purple-500/40
+                hover:border-purple-400/30
                 hover:shadow-xl
                 hover:shadow-purple-500/10
               `}
             >
-              {/* BRILHO */}
+              {/* ========================= */}
+              {/* BRILHO ROXO */}
+              {/* ========================= */}
+
               <div
                 className="
                   pointer-events-none
@@ -191,111 +210,171 @@ export function SpecialPackages() {
                   blur-3xl
                   opacity-0
                   transition-opacity
-                  duration-300
+                  duration-500
                   group-hover:opacity-100
                 "
               />
 
-              {/* DIAMANTES */}
-              <div className="relative flex items-center gap-3">
-                <span className="text-4xl">
-                  💎
-                </span>
+              {/* ========================= */}
+              {/* BRILHO AZUL */}
+              {/* ========================= */}
 
-                <span
-                  className="
-                    text-3xl
-                    font-black
-                    text-purple-400
-                  "
-                >
-                  {item.diamonds}
-                </span>
-              </div>
-
-              {/* NOME */}
-              <h3
-                className="
-                  relative
-                  mt-6
-                  text-lg
-                  font-bold
-                  text-white
-                "
-              >
-                {item.name}
-              </h3>
-
-              {/* ATENÇÃO */}
               <div
                 className="
-                  relative
-                  mt-5
-                  rounded-lg
-                  border
-                  border-red-500/40
-                  bg-transparent
-                  p-3
-                  text-center
-                  text-sm
-                  font-bold
-                  text-red-300
+                  pointer-events-none
+                  absolute
+                  right-1/3
+                  top-1/2
+                  h-24
+                  w-24
+                  rounded-full
+                  bg-blue-500/10
+                  blur-3xl
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
                 "
-              >
-                ⚠️ Atenção: Como funciona?
-              </div>
+              />
 
-              {/* PREÇO */}
-              <div className="relative mt-5">
-                <span
+              {/* ========================= */}
+              {/* BRILHO VERDE */}
+              {/* ========================= */}
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -bottom-16
+                  -left-16
+                  h-32
+                  w-32
+                  rounded-full
+                  bg-green-500/10
+                  blur-3xl
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              />
+
+              {/* ========================= */}
+              {/* CONTEÚDO */}
+              {/* ========================= */}
+
+              <div className="relative z-10">
+
+                {/* DIAMANTES */}
+                <div className="flex items-center gap-3">
+                  <span
+                    className="
+                      text-4xl
+                      drop-shadow-lg
+                    "
+                  >
+                    💎
+                  </span>
+
+                  <span
+                    className="
+                      text-3xl
+                      font-black
+                      text-purple-400
+                    "
+                  >
+                    {item.diamonds}
+                  </span>
+                </div>
+
+                {/* NOME */}
+                <h3
                   className="
-                    text-sm
-                    text-slate-500
-                    line-through
+                    mt-6
+                    text-lg
+                    font-bold
+                    text-white
                   "
                 >
-                  {item.oldPrice}
-                </span>
+                  {item.name}
+                </h3>
 
+                {/* ATENÇÃO */}
                 <div
                   className="
-                    text-2xl
-                    font-black
-                    text-green-400
+                    mt-5
+                    rounded-lg
+                    border
+                    border-red-500/30
+                    bg-red-500/5
+                    p-3
+                    text-center
+                    text-sm
+                    font-bold
+                    text-red-300
+                    backdrop-blur-sm
                   "
                 >
-                  {item.price}
+                  ⚠️ Atenção: Como funciona?
                 </div>
-              </div>
 
-              {/* BOTÃO */}
-              <button
-                type="button"
-                className="
-                  relative
-                  mt-5
-                  w-full
-                  rounded-lg
-                  bg-gradient-to-r
-                  from-purple-600
-                  to-purple-500
-                  py-3
-                  font-bold
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:brightness-110
-                  hover:shadow-lg
-                  hover:shadow-purple-500/20
-                "
-              >
-                Comprar
-              </button>
+                {/* PREÇO */}
+                <div className="mt-5">
+                  <span
+                    className="
+                      text-sm
+                      text-slate-500
+                      line-through
+                    "
+                  >
+                    {item.oldPrice}
+                  </span>
+
+                  <div
+                    className="
+                      mt-1
+                      text-2xl
+                      font-black
+                      text-green-400
+                    "
+                  >
+                    {item.price}
+                  </div>
+                </div>
+
+                {/* BOTÃO */}
+                <button
+                  type="button"
+                  className="
+                    relative
+                    mt-5
+                    w-full
+                    rounded-lg
+                    bg-gradient-to-r
+                    from-purple-600
+                    via-blue-600
+                    to-green-500
+                    py-3
+                    font-bold
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:brightness-110
+                    hover:shadow-lg
+                    hover:shadow-purple-500/20
+                  "
+                >
+                  Comprar
+                </button>
+              </div>
             </article>
           ))}
         </div>
 
+        {/* ========================= */}
         {/* RODAPÉ */}
+        {/* ========================= */}
+
         <p
           className="
             mt-10

@@ -12,10 +12,8 @@ export function Hero() {
         bg-[#050816]
       "
     >
-
       {/* BACKGROUND */}
       <div className="absolute inset-0">
-
         <Image
           src="/images/freefire-bg.jpg"
           alt=""
@@ -27,7 +25,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#050816] via-[#050816]/70 to-[#050816]/30" />
 
         <div className="absolute inset-0 bg-[#050816]/40" />
-
       </div>
 
       {/* CONTEÚDO */}
@@ -42,15 +39,32 @@ export function Hero() {
           items-center
           px-6
           py-16
+          sm:px-8
           lg:px-16
         "
       >
-
-        <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2">
-
+        <div
+          className="
+            grid
+            w-full
+            grid-cols-1
+            items-center
+            gap-12
+            lg:grid-cols-2
+          "
+        >
           {/* TEXTO */}
-          <div>
-
+          <div
+            className="
+              flex
+              flex-col
+              items-center
+              text-center
+              lg:items-start
+              lg:text-left
+            "
+          >
+            {/* BADGE */}
             <div
               className="
                 mb-5
@@ -71,13 +85,15 @@ export function Hero() {
               💎 Recarga de Diamantes
             </div>
 
+            {/* TÍTULO */}
             <h1
               className="
-                text-5xl
+                text-4xl
                 font-black
                 leading-[0.95]
                 tracking-tight
-                sm:text-6xl
+                sm:text-5xl
+                md:text-6xl
                 lg:text-7xl
               "
             >
@@ -104,6 +120,7 @@ export function Hero() {
               </span>
             </h1>
 
+            {/* DESCRIÇÃO */}
             <p
               className="
                 mt-6
@@ -119,8 +136,16 @@ export function Hero() {
             </p>
 
             {/* BOTÕES */}
-            <div className="mt-8 flex flex-wrap gap-4">
-
+            <div
+              className="
+                mt-8
+                flex
+                flex-wrap
+                justify-center
+                gap-4
+                lg:justify-start
+              "
+            >
               <Link
                 href="#recargas"
                 className="
@@ -159,14 +184,18 @@ export function Hero() {
               >
                 Marketplace
               </Link>
-
             </div>
-
           </div>
 
           {/* LOGIN ID */}
-          <div className="flex justify-center lg:justify-end">
-
+          <div
+            className="
+              flex
+              w-full
+              justify-center
+              lg:justify-end
+            "
+          >
             <div
               className="
                 w-full
@@ -175,13 +204,13 @@ export function Hero() {
                 border
                 border-purple-500/30
                 bg-[#090512]/80
-                p-7
+                p-6
                 shadow-2xl
                 shadow-purple-900/30
                 backdrop-blur-xl
+                sm:p-7
               "
             >
-
               <h2 className="text-center text-2xl font-bold">
                 Faça login com teu ID
               </h2>
@@ -190,8 +219,8 @@ export function Hero() {
                 Informe o seu ID do Free Fire para continuar.
               </p>
 
+              {/* INPUT */}
               <div className="mt-6">
-
                 <label className="mb-2 block text-sm text-slate-400">
                   ID do Free Fire
                 </label>
@@ -215,11 +244,10 @@ export function Hero() {
                     focus:ring-purple-500/20
                   "
                 />
-
               </div>
 
-              <div className="mt-4 grid grid-cols-2 gap-3">
-
+              {/* BOTÕES LOGIN */}
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <button
                   className="
                     rounded-lg
@@ -253,15 +281,10 @@ export function Hero() {
                 >
                   🔍 Verificar ID
                 </button>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
